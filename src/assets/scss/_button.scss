@@ -1,0 +1,258 @@
+@charset "UTF-8";
+
+.button {
+    @include flexbox($ds: inline-flex, $ai: center, $jc: center);
+    @include font($fw: 700, $ls: -0.35px);
+
+    position: relative;
+    padding: 0 5px;
+    border-radius: 3px;
+    text-align: center;
+
+    &:disabled {
+        opacity: 0.6;
+    }
+    
+    &--small {
+        height: 32px;
+    }
+    
+    @for $buttonSmall from 30 through 39 {
+        &--small#{$buttonSmall} {
+            height: 0px + $buttonSmall;
+        }
+    }
+    
+    &--medium {
+        height: 40px;
+    }
+    
+    @for $buttonMedium from 40 through 49 {
+        &--medium#{$buttonMedium} {
+            height: 0px + $buttonMedium;
+        }
+    }
+        
+    &--large {
+        height: 52px;
+        font-weight: bold;
+    }
+    
+    @for $buttonLarge from 50 through 59 {
+        &--medium#{$buttonLarge} {
+            height: 0px + $buttonLarge;
+            font-weight: bold;
+        }
+    }
+        
+    &--largeX {
+        height: 120px;
+        font-size: $fs-17;
+    }
+
+    &--radius100p {
+        border-radius: 100%;
+    }
+
+    &._font {
+        &--normal {
+            font-weight: normal;
+        }
+    }
+
+    &._underline {
+        text-decoration: underline;
+    }
+
+    &._padding0 {
+        padding: 0;
+    }
+
+    &._w100p {
+        width: 100%;
+        padding: 0;
+    }
+
+    &._h100p {
+        height: 100%;
+    }
+
+    &._tooltip {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+    }
+
+    // width
+    @for $buttonWidth from 1 through 30 {
+        &._w#{(10 * $buttonWidth)} {
+            flex: 0 0 (10px * $buttonWidth);
+            min-width : 10px * $buttonWidth;
+        }
+    }
+
+    // width, height
+    @for $buttonWidth from 1 through 60 {
+        &._wh#{(1 * $buttonWidth)} {
+            flex: 0 0 (1px * $buttonWidth);
+            width : 1px * $buttonWidth;
+            height : 1px * $buttonWidth;
+        }
+    }
+
+    // radius
+    @for $buttonRadiusNum from 0 through 100 {
+        &--radius#{$buttonRadiusNum} {
+            border-radius: 0px + $buttonRadiusNum;
+        }
+    }
+
+    $button-color-list: (
+        // white
+        button--fff : (border: $color-fff, bg: $color-fff),
+        // black
+        button--6f6f6f : (border: $color-6f6f6f, bg: $color-6f6f6f),
+        // grey
+        button--3b414d : (border: $color-3b414d, bg: $color-3b414d),
+        button--434648 : (border: $color-434648, bg: $color-434648),
+        // blue
+        button--0070ee : (border: $color-0070ee, bg: $color-0070ee),
+        button--0050a3 : (border: $color-0050a3, bg: $color-0050a3),
+        button--0089ff : (border: $color-0089ff, bg: $color-0089ff),
+        // red
+        button--ff0000 : (border: $color-ff0000, bg: $color-ff0000),
+        button--f13712 : (border: $color-f13712, bg: $color-f13712),
+    );
+    
+    $button-outline: outline;
+    $button-dashed: dashed;
+    
+    @each $button-color-name, $button-color-size in $button-color-list {
+        &.#{$button-color-name} {
+            border-width: 1px;
+            border-style: solid;
+            border-color: map-get($button-color-size, border);
+            background-color: map-get($button-color-size, bg);
+    
+            &--#{$button-outline}{
+                border-width: 1px;
+                border-style: solid;
+                border-color: map-get($button-color-size, border);
+                background-color: transparent;
+            }
+    
+            &--#{$button-dashed}{
+                border-width: 1px;
+                border-style: dashed;
+                border-color: map-get($button-color-size, border);
+                background-color: transparent;
+            }
+        }
+    }
+
+    @for $buttonSpace from 0 through 30 {
+        &--top#{$buttonSpace} {
+            margin-top: 0px + $buttonSpace;
+        }
+    
+        &--bottom#{$buttonSpace} {
+            margin-bottom: 0px + $buttonSpace;
+        }
+
+        &--right#{$buttonSpace} {
+            margin-right: 0px + $buttonSpace;
+        }
+    
+        &--left#{$buttonSpace} {
+            margin-left: 0px + $buttonSpace;
+        }
+    }
+    
+    &--auto {  
+        &--top {
+            margin-top: auto;
+        }
+
+        &--bottom {
+            margin-bottom: auto;
+        }
+        
+        &--right {
+            margin-right: auto;
+        }
+    
+        &--left {
+            margin-left: auto;
+        }
+    }
+
+    &-area {
+        @include flexbox($ai: center);
+
+        &._end {
+            @include flexbox($jc: end);
+        }
+    
+        &._center {
+            @include flexbox($jc: center);
+        }
+    
+        &._between {
+            @include flexbox($jc: between);
+        }
+    
+        .button {
+            & + .button {
+                margin-left: 12px;
+            }
+        }
+
+        .bar {
+            margin: 0 10px;
+        }
+    }
+
+    @at-root {
+        .button-wrap {
+            @include flexbox;
+
+            @for $buttonCol from 1 through 5 {
+                &._col#{$buttonCol} {
+                    .button {
+                        flex: 1;
+                        width: calc(100% / #{$buttonCol});
+
+                        & + .button {
+                            margin-left: 12px;
+                        }
+                    }   
+                }
+            }
+
+            &--center {
+                @include flexbox($jc: center);
+            }
+        }
+
+        .box_fixed_button {
+            .button {
+                min-width: 120px;
+            }
+        }
+    }
+
+    &--edit {
+        &:hover,
+        &:focus {
+            .icon-edit {
+                background-image: url(../images/shape/icon-edit--white.svg);
+            }
+        }
+    }
+
+    &:disabled {
+        border-color: $color-3b414d;
+        background-color: $color-3b414d;
+        pointer-events: none;
+    }
+}

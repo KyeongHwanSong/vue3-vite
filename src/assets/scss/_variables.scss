@@ -1,0 +1,236 @@
+@charset "UTF-8";
+
+// 가로값
+$max-width: 1920px;
+$min-width: 1280px;
+$lnb-width: 75px;
+$side-width: 350px;
+$side-meeting-width: 420px;
+
+// 세로값
+$header-height: 70px;
+
+$mobile-header: 50px;
+$mobile-modal-header: 57px;
+$mobile-modal-footer: 72px;
+
+/* variable */
+:root {
+	--header-height: 60px;
+	--nav-width: 72px;
+	--side-width: 340px;
+}
+
+// 폰트 값
+$fs-11: 11px;
+$fs-12: 12px;
+$fs-13: 13px;
+$fs-14: 14px;
+$fs-15: 15px;
+$fs-16: 16px;
+$fs-17: 17px;
+$fs-18: 18px;
+$fs-19: 19px;
+$fs-20: 20px;
+$fs-21: 21px;
+$fs-22: 22px;
+$fs-23: 23px;
+$fs-24: 24px;
+$fs-25: 25px;
+$fs-26: 26px;
+$fs-27: 27px;
+$fs-28: 28px;
+$fs-29: 29px;
+$fs-30: 30px;
+$fs-31: 31px;
+$fs-32: 32px;
+$fs-33: 33px;
+$fs-34: 34px;
+$fs-35: 35px;
+$fs-36: 36px;
+$fs-40: 40px;
+$fs-46: 46px;
+$fs-50: 50px;
+
+// radius
+$radius2: 2px;
+$radius3: 3px;
+$radius4: 4px;
+$radius5: 5px;
+$radius6: 6px;
+$radius8: 8px;
+$radius10: 10px;
+$radius11: 11px;
+$radius12: 12px;
+$radius13: 13px;
+$radius14: 14px;
+$radius15: 15px;
+$radius16: 16px;
+$radius18: 18px;
+$radius19: 19px;
+$radius20: 20px;
+$radius23: 23px;
+
+$radius10p: 10%;
+$radius20p: 20%;
+$radius30p: 30%;
+$radius40p: 40%;
+$radius50p: 50%;
+$radius60p: 60%;
+$radius70p: 70%;
+$radius80p: 80%;
+$radius90p: 90%;
+$radius100p: 100%;
+
+// 색상
+$color-fff: #fff;
+$color-000: #000;
+$color-111: #111;
+$color-222: #222;
+$color-333: #333;
+$color-666: #666;
+$color-888: #888;
+$color-999: #999;
+$color-aaa: #aaa;
+$color-a2a2a2: #a2a2a2;
+$color-b1dcff: #b1dcff;
+$color-ccc: #ccc;
+$color-ddd: #ddd;
+$color-d8d8d8: #d8d8d8;
+$color-dfdfdf: #dfdfdf;
+$color-eee: #eee;
+
+$color-0050a3: #0050a3;
+$color-0b0b0b: #0b0b0b;
+$color-0b0e15: #0b0e15;
+$color-0b0e16: #0b0e16;
+$color-0d0e17: #0d0e17;
+
+$color-111213: #111213;
+$color-161616: #161616;
+$color-161a23: #161a23;
+$color-1b1b1b: #1b1b1b;
+$color-1b1f23: #1b1f23;
+$color-1c1f23: #1c1f23;
+$color-1d2433: #1d2433;
+
+$color-23282d: #23282d;
+$color-232a33: #232a33;
+$color-242e38: #242e38;
+$color-252525: #252525;
+$color-252b31: #252b31;
+$color-262729: #262729;
+$color-262a33: #262a33;
+$color-272a2e: #272a2e;
+$color-2a383a: #2a383a;
+$color-2b2b2b: #2b2b2b;
+$color-2e3033: #2e3033;
+$color-2b3039: #2b3039;
+$color-2d3138: #2d3138;
+$color-2f3032: #2f3032;
+$color-2f343d: #2f343d;
+
+$color-323335: #323335;
+$color-333943: #333943;
+$color-333947: #333947;
+$color-343a45: #343a45;
+$color-353a45: #353a45;
+$color-373a3c: #373a3c;
+$color-3a3a3a: #3a3a3a;
+$color-3d3f40: #3d3f40;
+$color-393f4a: #393f4a;
+$color-3a3f4b: #3a3f4b;
+$color-3b414d: #3b414d;
+$color-3b474d: #3b474d;
+$color-3b4c65: #3b4c65;
+$color-393939: #393939;
+
+$color-414141: #414141;
+$color-424242: #424242;
+$color-44494e: #44494e;
+$color-434648: #434648;
+$color-4b4b4b: #4b4b4b;
+$color-4b4c4e: #4b4c4e;
+$color-4b4d4e: #4b4d4e;
+
+$color-575757: #575757;
+$color-585a5f: #585a5f;
+
+$color-6f6f6f: #6f6f6f;
+
+$color-757575: #757575;
+
+$color-808080: #808080;
+$color-8d8d8d: #8d8d8d;
+
+$color-949494: #949494;
+$color-979797: #979797;
+$color-9a9a9a: #9a9a9a;
+$color-9fa1a1: #9fa1a1;
+$color-9f9f9f: #9f9f9f;
+
+$color-af841d: #af841d;
+$color-adadad: #adadad;
+$color-c2c4c3: #c2c4c3;
+$color-e2e5e9: #e2e5e9;
+$color-f1f1f1: #f1f1f1;
+
+$color-0007ff: #0007ff;
+$color-0070ee: #0070ee;
+$color-0078ff: #0078ff;
+$color-007bf0: #007bf0;
+$color-0089ff: #0089ff;
+$color-1e69be: #1e69be;
+$color-2e8cff: #2e8cff;
+$color-2d82ff: #2d82ff;
+$color-3364ff: #3364ff;
+$color-3aacff: #3aacff;
+$color-b1dcff: #b1dcff;
+
+$color-4d4d4d: #4d4d4d;
+
+$color-ff9566: #ff9566;
+$color-ff5d5d: #ff5d5d;
+$color-f13712: #f13712;
+
+$color-ffc800: #ffc800;
+$color-ffde32: #ffde32;
+$color-fff100: #fff100;
+
+$color-00a874: #00a874;
+$color-5cbe97: #5cbe97;
+
+$color-b479ff: #b479ff;
+
+$color-ff00b9: #ff00b9;
+
+// 캔버스
+$color-ff0000: #ff0000;
+$color-ff087f: #ff087f;
+$color-ff6a00: #ff6a00;
+$color-ffce00: #ffce00;
+$color-049954: #049954;
+$color-47f5ad: #47f5ad;
+$color-0031ff: #0031ff;
+$color-06a4f1: #06a4f1;
+$color-9b28b4: #9b28b4;
+
+$whiteOpacity9: rgba($color-fff, 0.9);
+$whiteOpacity8: rgba($color-fff, 0.8);
+$whiteOpacity7: rgba($color-fff, 0.7);
+$whiteOpacity6: rgba($color-fff, 0.6);
+$whiteOpacity5: rgba($color-fff, 0.5);
+$whiteOpacity4: rgba($color-fff, 0.4);
+$whiteOpacity3: rgba($color-fff, 0.3);
+$whiteOpacity2: rgba($color-fff, 0.2);
+$whiteOpacity1: rgba($color-fff, 0.1);
+
+$blackOpacity9: rgba($color-000, 0.9);
+$blackOpacity8: rgba($color-000, 0.8);
+$blackOpacity7: rgba($color-000, 0.7);
+$blackOpacity6: rgba($color-000, 0.6);
+$blackOpacity5: rgba($color-000, 0.5);
+$blackOpacity4: rgba($color-000, 0.4);
+$blackOpacity3: rgba($color-000, 0.3);
+$blackOpacity2: rgba($color-000, 0.2);
+$blackOpacity1: rgba($color-000, 0.1);

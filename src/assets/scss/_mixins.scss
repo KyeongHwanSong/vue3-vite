@@ -1,0 +1,284 @@
+@charset "UTF-8";
+
+// floast 해제
+@mixin clearfix {
+	&::before {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+// scroll x
+@mixin scrollIn {
+	flex-grow: 1;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-right: 20px;
+}
+
+// scroll y
+@mixin scrollInX {
+	&::-webkit-scrollbar {
+		height: 5px;
+		padding-bottom: 4px;
+	}
+	&::-webkit-scrollbar-track {
+		background: $color-1b1b1b;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: $color-3b414d;
+		border-radius: 4px;
+		opacity: 0.2;
+	}
+}
+
+// flex
+$flex-map: (
+	start: flex-start,
+	end: flex-end,
+	between: space-between,
+	around: space-around,
+	stretch: stretch,
+	center: center,
+	base: baseline,
+);
+
+$flex-direction-map: (
+	column: column,
+	column-reverse: column-reverse,
+	revert: revert,
+	row: row,
+	row-reverse: row-reverse,
+);
+
+@function _get-flex-value($key) {
+	@return map-get($flex-map, $key);
+}
+
+@function _get-flex-direction($key) {
+	@return map-get($flex-direction-map, $key);
+}
+
+@mixin flexbox($ds: flex, $jc: null, $ai: null, $fd: null, $fw: null) {
+	display: $ds;
+	align-items: _get-flex-value($ai);
+	justify-content: _get-flex-value($jc);
+	flex-direction: _get-flex-direction($fd);
+	flex-wrap: $fw;
+}
+
+@mixin marginAuto($dr: null) {
+	margin-#{$dr}: auto;
+}
+
+// 말줄임
+@mixin ellipsis($line: 1) {
+	@if ($line == 1) {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	} @else if ($line == 2) {
+		display: -webkit-box;
+		position: relative;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		line-clamp: 2;
+		-webkit-line-clamp: 2;
+		box-orient: vertical;
+		-webkit-box-orient: vertical;
+	} @else if ($line == 3) {
+		display: -webkit-box;
+		position: relative;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		line-clamp: 3;
+		-webkit-line-clamp: 3;
+		box-orient: vertical;
+		-webkit-box-orient: vertical;
+	}
+}
+
+@mixin ellipsisNone {
+	overflow: inherit;
+	white-space: inherit;
+	text-overflow: inherit;
+}
+
+@mixin wh100 {
+	width: 100%;
+	height: 100%;
+}
+
+// position
+@mixin pos(
+	$ps: absolute,
+	$tp: null,
+	$bt: null,
+	$lt: null,
+	$rt: null,
+	$zi: null
+) {
+	position: $ps;
+	top: $tp;
+	bottom: $bt;
+	left: $lt;
+	right: $rt;
+	z-index: $zi;
+}
+
+@mixin beforePos(
+	$ct: '',
+	$ps: absolute,
+	$tp: null,
+	$lt: null,
+	$rt: null,
+	$bt: null,
+	$zi: null,
+	$wd: null,
+	$hi: null,
+	$bg: null
+) {
+	content: $ct;
+	position: $ps;
+	top: $tp;
+	left: $lt;
+	right: $rt;
+	bottom: $bt;
+	z-index: $zi;
+	width: $wd;
+	height: $hi;
+	background-color: $bg;
+}
+
+@mixin border($bw: 1px, $bs: solid, $bc: null, $br: null, $bg: null) {
+	border-radius: $br;
+	border: $bw $bs $bc;
+	background-color: $bg;
+}
+
+@mixin bgRadius($br: null, $bg: null) {
+	border-radius: $br;
+	background-color: $bg;
+}
+
+@mixin borderLine(
+	$dr: null,
+	$bw: 1px,
+	$bs: solid,
+	$bc: null,
+	$br: null,
+	$bg: null
+) {
+	border-radius: $br;
+	border-#{$dr}: $bw $bs $bc;
+	background-color: $bg;
+}
+
+@mixin radius($br: null) {
+	border-radius: #{$br}px;
+}
+
+// text
+@mixin font($fs: $fs-15, $lh: null, $co: $color-fff, $fw: null, $ls: null) {
+	font-size: $fs;
+	line-height: $lh;
+	color: $co;
+	font-weight: $fw;
+	letter-spacing: $ls;
+}
+
+@mixin fontPercent($fs: #{$px-15}px, $lh: 1.5) {
+	font-size: $fs;
+	line-height: $lh;
+}
+
+@mixin bgImage($url: null, $bp: null, $bs: null, $bc: null) {
+	background-color: $bc;
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-position: $bp;
+	background-size: $bs;
+}
+
+// button
+@mixin buttonSet(
+	$padding: 0 20px,
+	$bc: $color-00409702,
+	$br: $radius03,
+	$fs: 15px,
+	$lh: 1,
+	$co: $color-00409702
+) {
+	padding: $padding;
+	border-radius: $br;
+	border: solid 1px $bc;
+	font-size: $fs;
+	line-height: $lh;
+	color: $co;
+}
+
+@mixin triangle(
+	$bt: null,
+	$bb: null,
+	$bl: null,
+	$br: null,
+	$btc: transparent,
+	$bbc: transparent,
+	$blc: transparent,
+	$brc: transparent
+) {
+	border-top: $bt solid $btc;
+	border-bottom: $bb solid $bbc;
+	border-left: $bl solid $blc;
+	border-right: $br solid $brc;
+}
+
+// mixin
+@mixin prefix($property, $value, $prefixes: ()) {
+	@each $prefix in $prefixes {
+		-#{$prefix}-#{$property}: $value;
+	}
+
+	#{$property}: $value;
+}
+
+@mixin unify-parent($child) {
+	@at-root #{selector-unify(&, $child)} {
+		@content;
+	}
+}
+
+$break-576: 576px;
+$break-768: 768px;
+$break-1280: 1280px;
+$break-1440: 1440px;
+$break-1750: 1750px;
+
+@mixin respond($breakpoint) {
+	@if ($breakpoint == break576) {
+		@media (max-width: $break-576) {
+			@content;
+		}
+	}
+	@if ($breakpoint == break768) {
+		@media (max-width: $break-768) {
+			@content;
+		}
+	}
+	@if ($breakpoint == break1280) {
+		@media (max-width: $break-1280) {
+			@content;
+		}
+	}
+	@if ($breakpoint == break1440) {
+		@media (max-width: $break-1440) {
+			@content;
+		}
+	}
+	@if ($breakpoint == break1750) {
+		@media (max-width: $break-1750) {
+			@content;
+		}
+	}
+}
